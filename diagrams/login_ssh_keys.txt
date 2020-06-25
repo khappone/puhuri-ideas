@@ -1,0 +1,20 @@
+title Login using SSH keys
+
+participant Alice
+participant Puhuri portal
+participant CSC IdM service
+participant LUMI Supercomputer
+
+note over Alice,Puhuri portal: Perform login
+
+Alice->Puhuri portal: Add SSH public key to **p_alice@p**
+Puhuri portal->Puhuri portal: Possibly extra verification when adding auth method
+Puhuri portal->Alice: SSH key added
+CSC IdM service->Puhuri portal: Periodic user sync
+Puhuri portal->CSC IdM service: **p_alice@p** user data updated
+CSC IdM service->CSC IdM service: **p_alice@p** maps to local user **alica**, add SSH key
+Alice->LUMI Supercomputer: SSH using keys as **alica**
+LUMI Supercomputer->CSC IdM service: Verify account **alica** validty
+CSC IdM service->LUMI Supercomputer: Account enabled with access to LUMI
+LUMI Supercomputer->LUMI Supercomputer: SSH key login (using LDAP info from CSC IdM) for **alica**
+LUMI Supercomputer->Alice: Login sucessful, welcome to LUMI!

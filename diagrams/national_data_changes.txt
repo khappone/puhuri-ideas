@@ -1,0 +1,23 @@
+title National portal data changes
+
+participant Carol
+participant National portal (SWE)
+participant Puhuri AAI API
+participant Puhuri portal API
+
+Carol->National portal (SWE): Remove **Dan** from **Ale@s**
+National portal (SWE)->National portal (SWE): Remove **dan@idp** from **Ale@s**
+National portal (SWE)->Carol: **Dan** removed
+National portal (SWE)->National portal (SWE): **Ale@s** maps to **Ale_swe@p**, **dan@idp** maps to **p_dan@p**
+National portal (SWE)->Puhuri portal API: Remove **p_dan@p** from **Ale_swe@p**
+Puhuri portal API->National portal (SWE): **p_dan@p** removed from **Ale_swe@p**
+Carol->National portal (SWE): Add **Erin** to **Ale@s**
+National portal (SWE)->National portal (SWE):Add **erin@idp**  to **Ale@s**
+National portal (SWE)->Carol: **Erin** added to **Ale@s**
+National portal (SWE)->Puhuri AAI API: Check if a user mapping for **erin@idp** exists
+Puhuri AAI API->National portal (SWE): Negative
+National portal (SWE)->Puhuri AAI API: Add user **erin@idp** 
+Puhuri AAI API->Puhuri AAI API: Create user **p_erin@p** mapped to **erin@idp**
+Puhuri AAI API->National portal (SWE): User **p_erin@p** created
+National portal (SWE)->Puhuri portal API: Add **p_erin@p** to **Ale_swe@p**
+Puhuri portal API->National portal (SWE): **p_erin@p** added to **Ale_swe@p**

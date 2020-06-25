@@ -1,0 +1,19 @@
+title Log in with an invalid account (no account)
+
+participant Alice
+participant Alice's IdP
+participant Puhuri AAI
+participant CSC IdM service
+participant LUMI Supercomputer
+
+Alice->LUMI Supercomputer: SSH in
+LUMI Supercomputer->Alice: OIDC login link
+Alice->CSC IdM service: Web login
+CSC IdM service->Puhuri AAI: Forward **Alice**
+Puhuri AAI->Alice: Choose login & forward
+Alice->Alice's IdP: Login
+Alice's IdP->Puhuri AAI: (Via **Alice's** browser) login success,  user **alice@idp**
+Puhuri AAI->Puhuri AAI: Check existence of **alice@idp** account
+Puhuri AAI->CSC IdM service: Login not ok, unknown user 
+CSC IdM service->LUMI Supercomputer: Login not ok, unknown user
+LUMI Supercomputer->Alice: Login failed, no access

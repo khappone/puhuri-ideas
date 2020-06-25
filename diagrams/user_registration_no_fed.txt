@@ -1,0 +1,19 @@
+title Puhuri user registration w/o federation
+participant Frank
+participant Catch All Login
+participant Puhuri AAI
+participant Puhuri portal
+
+Frank->Puhuri portal: Visit page, Click login
+Puhuri portal->Puhuri AAI: Redicrect to **Puhuri AAI**
+Puhuri AAI->Frank: Redirect to **Commecial and others login**
+Frank->Catch All Login: Create & verify account
+Frank->Catch All Login: Login
+Catch All Login->Frank: Attributes incl. user id **frank@catch**
+Frank->Puhuri AAI: **frank@catch** attributes from catch all
+Puhuri AAI->Puhuri AAI: User mapped to **frank@catch** not found, trigger user creation
+Puhuri AAI->Frank: Request approval for storing user data
+Frank->Puhuri AAI: Approve Puhuri Agreement
+Puhuri AAI->Puhuri AAI: Create user **p_frank@p** in internal database, mapped to **frank@catch**
+Puhuri AAI-->Puhuri AAI: Possible extra manual verification sptep
+Puhuri AAI->Puhuri portal: Forward user to portal w/ auth* information

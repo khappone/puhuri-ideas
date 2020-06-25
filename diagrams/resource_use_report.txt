@@ -1,0 +1,10 @@
+title Resource use reporting
+
+participant Alice
+participant LUMI Supercomputer
+participant CSC accounting
+participant Puhuri portal
+
+Alice->LUMI Supercomputer: Perform science in project **alph**
+LUMI Supercomputer->CSC accounting: Report **alph** use
+CSC accounting->Puhuri portal: Report all Puhuri use **alph** as **Alpha@p**

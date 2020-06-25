@@ -1,0 +1,38 @@
+title National portal (SWE) resource allocation
+
+participant Carol
+participant Carol's IdP
+participant National portal (SWE)
+participant Resource allocator SE
+participant Puhuri AAI API
+participant Puhuri portal API
+
+Carol->National portal (SWE): Login
+National portal (SWE)->Carol: Forward to Carol's Idp
+Carol->Carol's IdP: Login
+Carol's IdP->Carol: OK, identity info
+Carol->National portal (SWE): Login, identity info, **carol@idp**
+National portal (SWE)->Carol: Login OK
+Carol->National portal (SWE): Create project **Ale@s**
+Carol->National portal (SWE): Add **Dan** to project
+National portal (SWE)->National portal (SWE): Add **dan @idp** to **Ale@s**
+Carol->National portal (SWE): Request LUMI resources for **Ale@s**
+National portal (SWE)->National portal (SWE): LUMI needs ToU approval
+National portal (SWE)->Carol: Request approval of ToU for requested resource
+Carol->National portal (SWE): Approve ToU
+National portal (SWE)->National portal (SWE): Store approval
+National portal (SWE)->Resource allocator SE: **Ale@s** resource request
+Resource allocator SE->Resource allocator SE: Internal process
+Resource allocator SE->National portal (SWE): Approve **Ale@s** request
+National portal (SWE)->Carol: Request approved
+National portal (SWE)->Puhuri AAI API: Add user **carol@idp** 
+Puhuri AAI API->Puhuri AAI API: Create user **p_carol@p** mapped to **carol@idp**
+Puhuri AAI API->National portal (SWE): User **p_carol@p** created
+National portal (SWE)->Puhuri AAI API: Add user **dan@idp** 
+Puhuri AAI API->Puhuri AAI API: Create user **p_dan@p** mapped to **dan@idp**
+Puhuri AAI API->National portal (SWE): User **p_dan@p** created
+note over National portal (SWE),Puhuri AAI API: National portal must know **carol@idp** and **dan@idp** identity info
+note over National portal (SWE),Puhuri AAI API: Who owns and can update accounts?
+National portal (SWE)->Puhuri portal API: Create project **Ale_swe@p** with **p_carol@p** (PI) and **p_dan@p**
+National portal (SWE)->Puhuri portal API: Record LUMI ToU approval for **Ale_swe@p**
+National portal (SWE)->Puhuri portal API: Add resource allocation to **Ale_swe@p**

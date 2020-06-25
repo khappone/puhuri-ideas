@@ -1,0 +1,13 @@
+title Resource allocation sync - new project
+
+participant Puhuri portal
+participant CSC IdM service
+
+CSC IdM service->Puhuri portal: Check for new allocations
+Puhuri portal->CSC IdM service: Return: Project **Beta@p**, allocation amount for **Beta@p**
+CSC IdM service->CSC IdM service: Check existence of local project mapped to **Beta@p** in IdM DB
+CSC IdM service->CSC IdM service: Create new local IdM project **bta**, and map to project **Beta@p**
+CSC IdM service->Puhuri portal: Get project info for **Beta@p**
+Puhuri portal->CSC IdM service: Return: **Beta@p** Project members, roles, login identifiers
+CSC IdM service->CSC IdM service: Add **bta** project membership info
+CSC IdM service->CSC IdM service: Add allocated amount resources to project **bta**
