@@ -1,0 +1,20 @@
+title Log in to object storage API
+
+participant Alice
+participant Alice's IdP
+participant Puhuri AAI
+participant CSC IdM service
+participant LUMI Object storage API
+
+
+Alice->CSC IdM service: Go to set password page
+CSC IdM service->Puhuri AAI: Forward to login
+Puhuri AAI->Alice: Choose login & forward
+Alice->Alice's IdP: Login
+Alice's IdP->Puhuri AAI: (Via **Alice's** browser) login success, user **alice@idp**
+Puhuri AAI->Puhuri AAI: Check existence of **alice@idp** account, map to **p_alice@p**
+Puhuri AAI->CSC IdM service: Login ok, **p_alice@p** account info
+CSC IdM service->CSC IdM service: Map **p_alice@p** to local account **alica**
+CSC IdM service->Alice: Password reset URL
+Alice->CSC IdM service: Set password s3cr37p455 for **alica**
+Alice->LUMI Object storage API: Use API with **alica:s3cr37p455**
