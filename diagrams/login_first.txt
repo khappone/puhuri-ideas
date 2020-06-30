@@ -1,0 +1,23 @@
+title First log in with a valid account
+
+participant Alice
+participant Alice's IdP
+participant Puhuri AAI
+participant CSC IdM service
+participant LUMI Supercomputer
+
+Alice->LUMI Supercomputer: SSH in
+LUMI Supercomputer->Alice: OIDC login link
+Alice->CSC IdM service: Web login
+CSC IdM service->Puhuri AAI: Forward **Alice**
+Puhuri AAI->Alice: Choose login & forward
+Alice->Alice's IdP: Login
+Alice's IdP->Puhuri AAI: (Via **Alice's** browser) login success, user **alice@idp**
+Puhuri AAI->Puhuri AAI: Check existence of **alice@idp** account, map to **p_alice@p**
+Puhuri AAI->CSC IdM service: Login ok, **p_alice@p** account info
+CSC IdM service->CSC IdM service: Map **p_alice@p** to local account **alica**
+CSC IdM service->Alice: First login, ask for approval of privacy agreement?
+Alice->CSC IdM service: Approved. Store approval
+CSC IdM service->Alice: (e-Mail) Welcome to CSC. Your local account is **alica**. Link to account info.
+CSC IdM service->LUMI Supercomputer: Alice login ok as local user **alica**
+LUMI Supercomputer->Alice: Login sucessful, welcome to LUMI!
