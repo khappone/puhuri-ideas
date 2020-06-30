@@ -25,6 +25,7 @@ Option 2) User controls their own identity
 
 ## User login diagrams
 
+ * login_first.txt - First login to LUMI
  * login.txt - Login with an existing account
  * login_no_account.txt - Login without an account
  * login_no_allocation.txt - Login without an allocation
