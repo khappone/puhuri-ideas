@@ -84,7 +84,7 @@ Option 2) User controls their own identity
 
  * resource_allocation_sync_existing - Sync resource allocations for a project which doesn't exist yet
 
-![resource_allocation_sync_exsisting](https://raw.githubusercontent.com/khappone/puhuri-ideas/master/diagrams/resource_allocation_sync_exsisting.png)
+![resource_allocation_sync_existing](https://raw.githubusercontent.com/khappone/puhuri-ideas/master/diagrams/resource_allocation_sync_existing.png)
 
  * membership_update - Update of project members
 
