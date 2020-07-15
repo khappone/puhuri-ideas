@@ -13,8 +13,8 @@ CSC IdM service->Puhuri AAI: Forward **Alice**
 Puhuri AAI->Alice: Choose login & forward
 Alice->Alice's IdP: Login
 Alice's IdP->Puhuri AAI: (Via **Alice's** browser) login success, user **alice@idp**
-Puhuri AAI->Puhuri AAI: Check existence of **alice@idp** account, map to **p_alice@p**
+Puhuri AAI->Puhuri AAI: Lookup user **alice@idp**, matches **p_alice@p**
 Puhuri AAI->CSC IdM service: Login ok, **p_alice@p** account info
-CSC IdM service->CSC IdM service: Map **p_alice@p** to local account **alica**
+CSC IdM service->CSC IdM service: Lookup user **p_alice@p**: matches local account **alica**
 CSC IdM service->LUMI Supercomputer: Alice login ok as local user **alica**
 LUMI Supercomputer->Alice: Login sucessful, welcome to LUMI!

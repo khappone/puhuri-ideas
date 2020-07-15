@@ -13,7 +13,7 @@ Puhuri AAI->Alice: Redirect to selected login method
 Alice->Alice IdP: Login
 Alice IdP->Alice: Attributes incl. user id **alice@idp**
 Alice->Puhuri AAI: **alice@idp** attributes from IdP
-Puhuri AAI->Puhuri AAI: User mapped to **alice@idp** not found, trigger user creation
+Puhuri AAI->Puhuri AAI: Lookup **alice@idp**, user not found, trigger user creation
 Puhuri AAI->Alice: Request approval for storing user data
 Alice->Puhuri AAI: Approve Puhuri Agreement
 Puhuri AAI->Puhuri AAI: Create user **p_alice@p** in internal database, mapped to **alice@idp**

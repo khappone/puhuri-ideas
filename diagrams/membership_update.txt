@@ -12,5 +12,6 @@ Puhuri portal->Puhuri portal: Remove **p_bob@p** from **Alpha@p**
 Puhuri portal->Alice: **Bob** removed from **Alpha**
 CSC IdM service->Puhuri portal: Periodic request for updates
 Puhuri portal->CSC IdM service: **Alpha@p** new mebmership list
-CSC IdM service->CSC IdM service: **Alpha@p** maps to local project **alph**
-CSC IdM service->CSC IdM service: Update **alph** membership
+CSC IdM service->CSC IdM service: Lookup project **Alpha@p**,  matches local project **alph**
+CSC IdM service->CSC IdM service: Lookup user **p_bob@p**, matches local user **bobby**
+CSC IdM service->CSC IdM service: Remove **bobby** from project **alph**

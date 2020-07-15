@@ -13,7 +13,7 @@ CSC IdM service->Puhuri AAI: Forward **Alice**
 Puhuri AAI->Alice: Choose login & forward
 Alice->Alice's IdP: Login
 Alice's IdP->Puhuri AAI: (Via **Alice's** browser) login success,  user **alice@idp**
-Puhuri AAI->Puhuri AAI: Check existence of **alice@idp** account
+Puhuri AAI->Puhuri AAI: Lookup user **alice@idp**, not found
 Puhuri AAI->CSC IdM service: Login not ok, unknown user 
 CSC IdM service->LUMI Supercomputer: Login not ok, unknown user
 LUMI Supercomputer->Alice: Login failed, no access
