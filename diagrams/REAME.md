@@ -25,26 +25,18 @@ This directory contains a set of diagrams for the user access management worked 
 
 ## National portal integration
 
-Option 1) National resource allocator controls identities
 
- * national_resource_allocation - Main workflows with national resource allocation portal
+ * national_resource_allocation_national_part - Main workflows within national resource allocation portal
 
-![national_resource_allocation](https://raw.githubusercontent.com/khappone/puhuri-ideas/master/diagrams/national_resource_allocation.png)
+![national_resource_allocation_national_part](https://raw.githubusercontent.com/khappone/puhuri-ideas/master/diagrams/national_resource_allocation_national_part.png)
+
+ * national_resource_allocation_sync - Main workflows within national resource allocation portal
+
+![national_resource_allocation_sync](https://raw.githubusercontent.com/khappone/puhuri-ideas/master/diagrams/national_resource_allocation_sync.png)
 
  * national_data_changes - Managing changing data with national resource allocation portal
 
 ![national_data_changes](https://raw.githubusercontent.com/khappone/puhuri-ideas/master/diagrams/national_data_changes.png)
-
-
-Option 2) User controls their own identity
- 
- * national_resource_allocation_alt - Main workflows with national resource allocation portal
-
-![national_resource_allocation_alt](https://raw.githubusercontent.com/khappone/puhuri-ideas/master/diagrams/national_resource_allocation_alt.png)
-
-* national_data_changes_alt - Managing changing data with national resource allocation portal
-
-![national_data_changes_alt](https://raw.githubusercontent.com/khappone/puhuri-ideas/master/diagrams/national_data_changes_alt.png)
 
 
 ## User login diagrams
@@ -69,9 +61,13 @@ Option 2) User controls their own identity
 
 ![login_ssh_keys](https://raw.githubusercontent.com/khappone/puhuri-ideas/master/diagrams/login_ssh_keys.png)
 
-* object_storage_api - Login to the object storage API
+* object_storage_api_first - First login to the object storage API
 
-![object_storage_api](https://raw.githubusercontent.com/khappone/puhuri-ideas/master/diagrams/object_storage_api.png)
+![object_storage_api_first](https://raw.githubusercontent.com/khappone/puhuri-ideas/master/diagrams/object_storage_api_first.png)
+
+* object_storage_api_subsequent - Subsequent logins to the object storage API
+
+![object_storage_api_subsequent](https://raw.githubusercontent.com/khappone/puhuri-ideas/master/diagrams/object_storage_api_subsequent.png)
 
 * object_storage_web - Login to the object storage web interface
 

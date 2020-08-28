@@ -1,19 +1,21 @@
 title Project resource request
 
 participant Alice
-participant Puhuri portal
+participant Puhuri CORE
 participant Resource allocator DK
 participant Resource allocator IS
 
-note over Alice,Puhuri portal: Log into the portal
-Alice->Puhuri portal: Act as Project **Alpha** PI
-Alice->Puhuri portal: Request LUMI resources from **Resource allocator DK**
-Puhuri portal->Puhuri portal: LUMI resources need ToU approval
-Puhuri portal->Alice: Request approval of ToU for requested resource
-Alice->Puhuri portal: Approve ToU
-Puhuri portal->Puhuri portal: Store approval
-Puhuri portal->Resource allocator DK: Pass request for resources for Project **Alpha@p**
+note over Alice,Puhuri CORE: Log into the portal
+Alice->Puhuri CORE: Act as Project **Alpha** PI
+Alice->Puhuri CORE: Look up available Allocators
+Puhuri CORE->Alice: **Resource allocator DK** and **Resource allocator IS**
+Alice->Puhuri CORE: Request LUMI resources from **Resource allocator DK**
+Puhuri CORE->Puhuri CORE: LUMI resources need ToU approval
+Puhuri CORE->Alice: Request approval of ToU for requested resource
+Alice->Puhuri CORE: Approve ToU
+Puhuri CORE->Puhuri CORE: Store approval
+Puhuri CORE->Resource allocator DK: Pass request for resources for Project **Alpha@p**
 Resource allocator DK->Resource allocator DK: Internal request process
-Resource allocator DK->Puhuri portal: Approve request for **Alpha**
-Puhuri portal->Puhuri portal: Store resource allocation for **Alpha@p** by **Resource allocator DK**
-Puhuri portal->Alice: LUMI Allocation for Project **Alpha** has been granted
+Resource allocator DK->Puhuri CORE: Approve request for **Alpha**
+Puhuri CORE->Puhuri CORE: Store resource allocation for **Alpha@p** by **Resource allocator DK**
+Puhuri CORE->Alice: LUMI Allocation for Project **Alpha** has been granted

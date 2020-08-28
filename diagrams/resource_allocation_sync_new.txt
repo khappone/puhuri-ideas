@@ -1,15 +1,15 @@
 title Resource allocation sync - new project
 
-participant Puhuri portal
-participant CSC IdM service
+participant Puhuri CORE
+participant CSC IdM
 
-CSC IdM service->Puhuri portal: Check for new allocations
-Puhuri portal->CSC IdM service: Return: Project **Beta@p**, allocation amount for **Beta@p**
-CSC IdM service->CSC IdM service: lookup of local project mapped to **Beta@p** in IdM DB, not found
-CSC IdM service->CSC IdM service: Create new local IdM project **bta**, and map to project **Beta@p**
-CSC IdM service->Puhuri portal: Get project info for **Beta@p**
-Puhuri portal->CSC IdM service: Return: **Beta@p** Project members are **p_alice@p**
-CSC IdM service->CSC IdM service: Lookup **p_alice@p** local account, not found
-CSC IdM service->CSC IdM service: Create local user **alica** mapped to **p_alice@p**
-CSC IdM service->CSC IdM service: add **alica** to project **bta**
-CSC IdM service->CSC IdM service: Add allocated amount resources to project **bta**
+CSC IdM->Puhuri CORE: Check for new allocations
+Puhuri CORE->CSC IdM: Return: Project **Beta@p**, allocation amount for **Beta@p**
+CSC IdM->CSC IdM: lookup of local project mapped to **Beta@p** in IdM DB, not found
+CSC IdM->CSC IdM: Create new local IdM project **bta**, and map to project **Beta@p**
+CSC IdM->Puhuri CORE: Get project info for **Beta@p**
+Puhuri CORE->CSC IdM: Return: **Beta@p** Project members are **p_alice@p**
+CSC IdM->CSC IdM: Lookup **p_alice@p** local account, not found
+CSC IdM->CSC IdM: Create local user **alica** mapped to **p_alice@p**
+CSC IdM->CSC IdM: add **alica** to project **bta**
+CSC IdM->CSC IdM: Add allocated amount resources to project **bta**

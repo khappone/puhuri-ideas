@@ -1,11 +1,9 @@
-title National portal (SWE) resource allocation (alt)
+title National portal (SWE) resource allocation National part
 
 participant Carol
 participant Carol's IdP
 participant National portal (SWE)
 participant Resource allocator SE
-participant Puhuri AAI API
-participant Puhuri portal API
 
 Carol->National portal (SWE): Login
 National portal (SWE)->Carol: Forward to Carol's Idp
@@ -25,8 +23,3 @@ National portal (SWE)->Resource allocator SE: **Ale@s** resource request
 Resource allocator SE->Resource allocator SE: Internal process
 Resource allocator SE->National portal (SWE): Approve **Ale@s** request
 National portal (SWE)->Carol: Request approved
-National portal (SWE)->Puhuri portal API: Create project **Ale_swe@p**. Can't find users, empty project
-National portal (SWE)->Puhuri portal API: Record LUMI ToU approval for **Ale_swe@p**
-National portal (SWE)->Puhuri portal API: Add resource allocation to **Ale_swe@p**
-note over Carol,Puhuri portal API: Carol registers, using **carol@idp** and gets an account **p_carol@p**
-National portal (SWE)->Puhuri portal API: Periodic update. **carol@idp** found, linked to **p_carol@p**. Add **p_carol@p** to **Ale_swe@p**

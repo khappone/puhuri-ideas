@@ -1,0 +1,16 @@
+title National portal (SWE) resource allocation sync
+
+participant Carol
+participant Carol's IdP
+participant National portal (SWE)
+participant Puhuri AAI
+participant Puhuri CORE
+
+note over Carol,National portal (SWE): See prev. Carol has project Ale with Dan as member.
+National portal (SWE)->Carol: Puhuri registration needed for LUMI access. Forward to Puhuri AAI.
+note over Carol,Puhuri CORE: Create account with normal workflow, log in to Puhuri CORE.
+Puhuri AAI->National portal (SWE): Puhuri account for Carol is **p_carol@p**
+National portal (SWE)->National portal (SWE): Store mapping between **carol@idp** and **p_carol@p**
+National portal (SWE)->Puhuri CORE: Create project **Ale_swe@p**. Add **p_carol@p** to project
+National portal (SWE)->Puhuri CORE: Record LUMI ToU approval for **Ale_swe@p**
+National portal (SWE)->Puhuri CORE: Add resource allocation to **Ale_swe@p**

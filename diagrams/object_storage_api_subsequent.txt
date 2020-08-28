@@ -1,0 +1,10 @@
+title Log in to object storage API subsequent times 
+
+participant Alice
+participant CSC IdM
+participant LUMI Object storage API
+
+
+Alice->LUMI Object storage API: Use API with **alica:s3cr37p455**
+LUMI Object storage API->CSC IdM: Verify **alica** credentials
+CSC IdM->LUMI Object storage API: Login OK

@@ -1,0 +1,28 @@
+title Log in to object storage API for the first time
+
+participant Alice
+participant Alice's IdP
+participant Puhuri AAI
+participant CSC AAI Proxy
+participant CSC IdM
+participant CSC password portal
+participant LUMI Object storage API
+
+
+Alice->CSC password portal: Go to set password page
+CSC password portal->CSC AAI Proxy: Forward login
+CSC AAI Proxy->Puhuri AAI: Forward login
+Puhuri AAI->Alice: Choose login & forward
+Alice->Alice's IdP: Login
+Alice's IdP->Puhuri AAI: (Via **Alice's** browser) login success, user **alice@idp**
+Puhuri AAI->Puhuri AAI: Lookup user **alice@idp**, matches **p_alice@p**
+Puhuri AAI->CSC AAI Proxy: Login ok, **p_alice@p** account info
+CSC AAI Proxy->CSC IdM: Lookup user **p_alice@p**
+CSC IdM->CSC AAI Proxy: **p_alice@p** matches **alica**
+CSC AAI Proxy->CSC password portal: User logged in as **alica**
+CSC password portal->Alice: Password reset URL
+Alice->CSC password portal: Set password s3cr37p455 for **alica**
+CSC password portal->CSC IdM: Update **alica** password to s3cr37p455
+Alice->LUMI Object storage API: Use API with **alica:s3cr37p455**
+LUMI Object storage API->CSC IdM: Verify **alica** credentials
+CSC IdM->LUMI Object storage API: Login OK

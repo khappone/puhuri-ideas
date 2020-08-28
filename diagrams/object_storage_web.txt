@@ -3,17 +3,19 @@ title Log in to object storage web
 participant Alice
 participant Alice's IdP
 participant Puhuri AAI
-participant CSC IdM service
+participant CSC AAI Proxy
+participant CSC IdM
 participant LUMI Object storage web interface
 
 Alice->LUMI Object storage web interface: Go to web page
-LUMI Object storage web interface->CSC IdM service: Forward to login
-CSC IdM service->Puhuri AAI: Forward to login
+LUMI Object storage web interface->CSC AAI Proxy: Forward to login
+CSC AAI Proxy->Puhuri AAI: Forward to login
 Puhuri AAI->Alice: Choose login & forward
 Alice->Alice's IdP: Login
 Alice's IdP->Puhuri AAI: (Via **Alice's** browser) login success, user **alice@idp**
 Puhuri AAI->Puhuri AAI: Lookup user **alice@idp**, matches  **p_alice@p**
-Puhuri AAI->CSC IdM service: Login ok, **p_alice@p** account info
-CSC IdM service->CSC IdM service: Lookup user **p_alice@p**, matches local account **alica**
-CSC IdM service->LUMI Object storage web interface: Alice login ok as local user **alica**
+Puhuri AAI->CSC AAI Proxy: Login ok, **p_alice@p** account info
+CSC AAI Proxy->CSC IdM: Lookup user **p_alice@p**
+CSC IdM->CSC AAI Proxy: **p_alice@p** matches **alica**
+CSC AAI Proxy->LUMI Object storage web interface: Alice login ok as local user **alica**
 LUMI Object storage web interface->Alice: Login sucessful, welcome to LUMI Object storage!

@@ -3,12 +3,12 @@ title Puhuri user registration w/ federation
 participant Alice
 participant Alice IdP
 participant Puhuri AAI
-participant Puhuri portal
+participant Puhuri CORE
 
 participant Alice IdP
 
-Alice->Puhuri portal: Visit page, Click login
-Puhuri portal->Puhuri AAI: Redicrect to **Puhuri AAI**
+Alice->Puhuri AAI: Visit page, Click register
+
 Puhuri AAI->Alice: Redirect to selected login method
 Alice->Alice IdP: Login
 Alice IdP->Alice: Attributes incl. user id **alice@idp**
@@ -17,4 +17,9 @@ Puhuri AAI->Puhuri AAI: Lookup **alice@idp**, user not found, trigger user creat
 Puhuri AAI->Alice: Request approval for storing user data
 Alice->Puhuri AAI: Approve Puhuri Agreement
 Puhuri AAI->Puhuri AAI: Create user **p_alice@p** in internal database, mapped to **alice@idp**
-Puhuri AAI->Puhuri portal: Forward user to portal w/ auth* information
+Alice->Puhuri CORE: Go to Puhuri CORE
+Puhuri CORE->Puhuri AAI: Forward to login
+Puhuri AAI->Puhuri AAI: Session exists for **p_alice@p**
+Puhuri AAI->Puhuri CORE: Forward user data for **p_alice@p**
+Puhuri CORE->Alice: Welcome to Puhuri CORE
+

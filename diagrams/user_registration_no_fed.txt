@@ -2,10 +2,9 @@ title Puhuri user registration w/o federation
 participant Frank
 participant Catch All Login
 participant Puhuri AAI
-participant Puhuri portal
+participant Puhuri CORE
 
-Frank->Puhuri portal: Visit page, Click login
-Puhuri portal->Puhuri AAI: Redicrect to **Puhuri AAI**
+Frank->Puhuri AAI: Visit page, Click register
 Puhuri AAI->Frank: Redirect to **Commecial and others login**
 Frank->Catch All Login: Create & verify account
 Frank->Catch All Login: Login
@@ -16,4 +15,8 @@ Puhuri AAI->Frank: Request approval for storing user data
 Frank->Puhuri AAI: Approve Puhuri Agreement
 Puhuri AAI->Puhuri AAI: Create user **p_frank@p** in internal database, mapped to **frank@catch**
 Puhuri AAI-->Puhuri AAI: Possible extra manual verification sptep
-Puhuri AAI->Puhuri portal: Forward user to portal w/ auth* information
+Frank->Puhuri CORE: Go to Puhuri CORE
+Puhuri CORE->Puhuri AAI: Forward to login
+Puhuri AAI->Puhuri AAI: Session exists for **p_frank@p**
+Puhuri AAI->Puhuri CORE: Forward user data for **p_frank@p**
+Puhuri CORE->Frank: Welcome to Puhuri CORE

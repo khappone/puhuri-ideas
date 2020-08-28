@@ -1,12 +1,12 @@
 title Project expiry
 
-participant Puhuri portal
+participant Puhuri CORE
 participant CSC IdM
 
 
-Puhuri portal->Puhuri portal: All **Alpha@a** resources grants expired
-CSC IdM->Puhuri portal: Periodic check
-Puhuri portal->CSC IdM: **Alpha@a** has no resource grants
+Puhuri CORE->Puhuri CORE: All **Alpha@a** resources grants expired
+CSC IdM->Puhuri CORE: Periodic check
+Puhuri CORE->CSC IdM: **Alpha@a** has no resource grants
 CSC IdM->CSC IdM: Lookup project **Alpha@a**, matches local project **alph**
 CSC IdM->(3)CSC IdM: **alph** active, activate grace period
 CSC IdM->CSC IdM: Deactivate **alph**

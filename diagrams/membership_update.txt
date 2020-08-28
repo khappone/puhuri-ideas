@@ -1,17 +1,17 @@
 title Update project memberships
 
 participant Alice
-participant Puhuri portal
-participant CSC IdM service
+participant Puhuri CORE
+participant CSC IdM
 
-note over Alice,Puhuri portal: Perform login
+note over Alice,Puhuri CORE: Perform login
 
-Alice->Puhuri portal: Act as project **Alpha** PI
-Alice->Puhuri portal: Remove **Bob** from project **Alpha**
-Puhuri portal->Puhuri portal: Remove **p_bob@p** from **Alpha@p**
-Puhuri portal->Alice: **Bob** removed from **Alpha**
-CSC IdM service->Puhuri portal: Periodic request for updates
-Puhuri portal->CSC IdM service: **Alpha@p** new mebmership list
-CSC IdM service->CSC IdM service: Lookup project **Alpha@p**,  matches local project **alph**
-CSC IdM service->CSC IdM service: Lookup user **p_bob@p**, matches local user **bobby**
-CSC IdM service->CSC IdM service: Remove **bobby** from project **alph**
+Alice->Puhuri CORE: Act as project **Alpha** PI
+Alice->Puhuri CORE: Remove **Bob** from project **Alpha**
+Puhuri CORE->Puhuri CORE: Remove **p_bob@p** from **Alpha@p**
+Puhuri CORE->Alice: **Bob** removed from **Alpha**
+CSC IdM->Puhuri CORE: Periodic request for updates
+Puhuri CORE->CSC IdM: **Alpha@p** new mebmership list
+CSC IdM->CSC IdM: Lookup project **Alpha@p**,  matches local project **alph**
+CSC IdM->CSC IdM: Lookup user **p_bob@p**, matches local user **bobby**
+CSC IdM->CSC IdM: Remove **bobby** from project **alph**

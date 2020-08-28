@@ -3,19 +3,19 @@ title Project creation
 participant Bob
 participant Alice
 
-participant Puhuri portal
+participant Puhuri CORE
 
 
-note over Alice,Puhuri portal: Perform login & first registration
-note over Bob,Puhuri portal: Perform login & first registration
+note over Alice,Puhuri CORE: Perform login & first registration
+note over Bob,Puhuri CORE: Perform login & first registration
 
 
-Alice->Puhuri portal: Create project **Alpha**
-Puhuri portal->Puhuri portal: Create project **Alpha@p** with **p_alice@p** as PI
-Puhuri portal->Alice: Project created
-Alice->Puhuri portal: Invite **Bob** to **Alpha**
-Puhuri portal->Puhuri portal: **Bob** matches **p_bob@p**
-Puhuri portal->Bob: Send invitation
-Bob->Puhuri portal: Approve invitation
-Puhuri portal->Puhuri portal: Add **p_bob@p** to **Alpha@p**
-Puhuri portal->Alice: **Bob** has joined the project **Alpha**
+Alice->Puhuri CORE: Create project **Alpha**
+Puhuri CORE->Puhuri CORE: Create project **Alpha@p** with **p_alice@p** as PI
+Puhuri CORE->Alice: Project created
+Alice->Puhuri CORE: Invite **Bob** to **Alpha**
+Puhuri CORE->Puhuri CORE: **Bob** matches **p_bob@p**
+Puhuri CORE->Bob: Send invitation
+Bob->Puhuri CORE: Approve invitation
+Puhuri CORE->Puhuri CORE: Add **p_bob@p** to **Alpha@p**
+Puhuri CORE->Alice: **Bob** has joined the project **Alpha**

@@ -1,20 +1,22 @@
-title Log in with a valid account
+title Log in with an existing account
 
 participant Alice
 participant Alice's IdP
 participant Puhuri AAI
-participant CSC IdM service
+participant CSC AAI Proxy
+participant CSC IdM
 participant LUMI Supercomputer
 
 Alice->LUMI Supercomputer: SSH in
 LUMI Supercomputer->Alice: OIDC login link
-Alice->CSC IdM service: Web login
-CSC IdM service->Puhuri AAI: Forward **Alice**
+Alice->CSC AAI Proxy: Web login
+CSC AAI Proxy->Puhuri AAI: Forward **Alice**
 Puhuri AAI->Alice: Choose login & forward
 Alice->Alice's IdP: Login
 Alice's IdP->Puhuri AAI: (Via **Alice's** browser) login success, user **alice@idp**
 Puhuri AAI->Puhuri AAI: Lookup user **alice@idp**, matches **p_alice@p**
-Puhuri AAI->CSC IdM service: Login ok, **p_alice@p** account info
-CSC IdM service->CSC IdM service: Lookup user **p_alice@p**: matches local account **alica**
-CSC IdM service->LUMI Supercomputer: Alice login ok as local user **alica**
+Puhuri AAI->CSC AAI Proxy: Login ok, **p_alice@p** account info
+CSC AAI Proxy->CSC IdM: Lookup user **p_alice@p**
+CSC IdM->CSC AAI Proxy: **p_alice@p** matches **alica**
+CSC AAI Proxy->LUMI Supercomputer: Alice login ok as local user **alica**
 LUMI Supercomputer->Alice: Login sucessful, welcome to LUMI!
