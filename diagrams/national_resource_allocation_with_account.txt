@@ -1,0 +1,53 @@
+title Resource Allocation with National Portal
+
+autonumber 
+participant Carol
+participant Carol's IdP
+participant National portal
+participant Puhuri AAI
+participant Puhuri Core
+
+== Carol is a PI and want to create project and request resources, Carol has registered at Puhuri AAI, but didnt yet connect Puhuri AAI CUID with national portal == #ddffdd
+
+Carol->National portal: User access National portal
+group #2f2e7b SAML Auth flow #white SAML 
+National portal->Carol: Forward to Carol's IdP (SAML flow)
+Carol->Carol's IdP: Login (SAML flow)
+Carol's IdP->Carol: OK, identity info (SAML flow)
+Carol->National portal: Login, identity info, **carol@idp** (SAML flow)
+end
+National portal->Carol: Login OK
+group #2f2e7b Project creation - abstracted, depends on national processes #white SAML
+Carol->National portal: Create project **Ale@s**
+National portal ->National portal: Create project
+National portal ->Carol: Project created
+end
+Carol->National portal: Request LUMI resources for **Ale@s**
+National portal->National portal: Carol has Puhuri CUID? NO 
+National portal->Carol: Ask user to link account with Puhuri AAI and present Privacy Notice
+Carol ->National portal: Start linking National portal account with Puhuri AAI account
+group #2f2e7b OIDC flow to get CUID #white SAML
+National portal->Carol: Login at authz point of Puhuri AAI, define Scope (OIDC flow)
+Carol -> Puhuri AAI: Login (OIDC flow)
+Puhuri AAI -> Carol: Discovery Service to choose IdP (SAML flow)
+Carol ->Puhuri AAI: Select Carol's IdP (SAML flow)
+Puhuri AAI ->Carol: Redirect to Carol IdP (SAML flow)
+Carol ->Carol's IdP: Login (SAML flow)
+Carol's IdP->Carol: OK, identity info (SAML flow)
+Carol->Puhuri AAI: Login, identity info, **carol@idp** (SAML flow)
+Puhuri AAI->Puhuri AAI: Is Carol registered? YES
+Puhuri AAI -> Carol: HTTP redirect to the redirect URI of National portal, inluding the Autz code (OIDC flow)
+Carol ->National portal: Autz code (OIDC flow)
+National portal -> Puhuri AAI: To token end point, passes Autz code, Client ID, Client Secret (OIDC flow)
+Puhuri AAI ->National portal: ID token, Access token  (OIDC flow)
+National portal -> Puhuri AAI: To user info end point with access token (OIDC flow)
+Puhuri AAI ->National portal: Returns claims with info according to the Scope from first(OIDC flow)
+National portal ->National portal: Add CUID to user account
+end
+
+National portal->Carol: Approve request for LUMI resources
+
+National portal ->Puhuri Core: Backchannel Sync: Project and Allocation Sync, linked with CUID
+
+Puhuri AAI -> Puhuri Core: 
+
